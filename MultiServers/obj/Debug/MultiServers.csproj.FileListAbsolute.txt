@@ -30,6 +30,4 @@ D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\bin\Debug\MultiServers
 D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\bin\Debug\MultiServers.exe
 D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\bin\Debug\MultiServers.pdb
 D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\bin\Debug\Newtonsoft.Json.dll
-D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\bin\Debug\Renci.SshNet.dll
-D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\bin\Debug\Renci.SshNet.xml
 D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.csproj.CopyComplete
