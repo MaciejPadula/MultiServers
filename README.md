@@ -1,5 +1,6 @@
 # MultiServers
 MultiServers is a minecraft servers manager. You can create multiple servers on your computer and run them simultaneously.
+![Przechwytywanie](https://user-images.githubusercontent.com/50674232/134733048-cb10122b-d328-401e-9b7f-c9857ac4f5ac.JPG)
 
 Creating new instance:
 ![image](https://user-images.githubusercontent.com/50674232/133772626-a8e1aed8-fa6c-4b2b-a681-f6ada025addc.png)
