@@ -436,10 +436,10 @@
             // 
             // Title
             // 
-            this.Title.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.Title.BackColor = System.Drawing.SystemColors.MenuBar;
             this.Title.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Title.Font = new System.Drawing.Font("Calibri", 14F);
-            this.Title.ForeColor = System.Drawing.Color.White;
+            this.Title.ForeColor = System.Drawing.Color.Black;
             this.Title.Location = new System.Drawing.Point(34, 3);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(122, 23);
@@ -449,10 +449,10 @@
             // 
             // Minim
             // 
-            this.Minim.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.Minim.BackColor = System.Drawing.SystemColors.MenuBar;
             this.Minim.FlatAppearance.BorderSize = 0;
             this.Minim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Minim.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Minim.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Minim.Location = new System.Drawing.Point(628, 0);
             this.Minim.Name = "Minim";
             this.Minim.Size = new System.Drawing.Size(61, 28);
@@ -463,7 +463,7 @@
             // 
             // Exit
             // 
-            this.Exit.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.Exit.BackColor = System.Drawing.Color.Tomato;
             this.Exit.FlatAppearance.BorderSize = 0;
             this.Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Exit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -479,7 +479,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.panel1.BackColor = System.Drawing.SystemColors.MenuBar;
             this.panel1.Controls.Add(this.iconA);
             this.panel1.Controls.Add(this.Title);
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -489,7 +489,7 @@
             // 
             // iconA
             // 
-            this.iconA.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.iconA.BackColor = System.Drawing.SystemColors.MenuBar;
             this.iconA.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("iconA.BackgroundImage")));
             this.iconA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.iconA.Location = new System.Drawing.Point(0, 0);

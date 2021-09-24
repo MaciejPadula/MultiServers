@@ -54,7 +54,7 @@ namespace MultiServers
             Button obj = sender as Button;
             if (activated)
             {
-                obj.BackColor = SystemColors.HotTrack;
+                //obj.BackColor = SystemColors.HotTrack;
             }
         }
 
@@ -446,30 +446,13 @@ namespace MultiServers
             }
         }
 
-
         private void InstanceWindow_Activated(object sender, EventArgs e)
         {
-            panel1.BackColor = SystemColors.HotTrack;
-            Exit.BackColor = SystemColors.HotTrack;
-            Exit.ForeColor = Color.White;
-            Minim.BackColor = SystemColors.HotTrack;
-            Minim.ForeColor = Color.White;
-            Title.ForeColor = Color.White;
-            Title.BackColor = SystemColors.HotTrack;
-            iconA.BackColor = SystemColors.HotTrack;
             activated = true;
         }
 
         private void InstanceWindow_Deactivate(object sender, EventArgs e)
         {
-            panel1.BackColor = Color.White;
-            Exit.BackColor = Color.White;
-            Exit.ForeColor = Color.Gray;
-            Minim.BackColor = Color.White;
-            Minim.ForeColor = Color.Gray;
-            Title.BackColor = Color.White;
-            Title.ForeColor = Color.Gray;
-            iconA.BackColor = Color.White;
             activated = false;
         }
 
