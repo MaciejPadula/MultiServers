@@ -17,90 +17,111 @@ namespace MultiServers
     public partial class InstanceWindow : Form
     {
         string path;
-        Process Server;
+        Process Server = new Process();
         StreamWriter consoleStreamWriter = null;
         delegate void UpdateConsoleWindowDelegate(String msg);
         Instance inst;
         int selectedsettings = 0, type = 0;
-        ShellStream shellStream;
-        SshClient client;
         bool activated = true;
-        public void ShellRunner(object sender, Renci.SshNet.Common.ShellDataEventArgs e)
-        {
-            try
-            {
-                String indata = shellStream.Read();
-                shellStream.Flush();
-                this.Invoke(new Action(() => richTextBox1.Text += indata));
-                //richTextBox1.Text += indata;
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-        public InstanceWindow(string path,Instance inst,int type)
+        List<Panel> settingspanels = new List<Panel>();
+        public InstanceWindow(string path, Instance inst, int type)
         {
             InitializeComponent();
             this.path = path;
             this.inst = inst;
             this.type = type;
-            
+
         }
+        /*TITLE PANEL*/
+        private void Minim_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void Exit_MouseEnter(object sender, EventArgs e)
+        {
+            Button obj = sender as Button;
+            if (activated)
+            {
+                obj.BackColor = Color.Tomato;
+            }
+        }
+
+        private void Exit_MouseLeave(object sender, EventArgs e)
+        {
+            Button obj = sender as Button;
+            if (activated)
+            {
+                obj.BackColor = SystemColors.HotTrack;
+            }
+        }
+
+        /*INSTANCE LOAD*/
+        private void InstanceWindow_Load(object sender, EventArgs e)
+        {
+            loadmods();
+            settingspanels.Add(instSettings);
+            settingspanels.Add(NetworkSettings);
+            settingspanels.Add(ServerSettings);
+            settingspanels.Add(mods);
+            comboBox1.Items.Clear();
+            instSettings.BringToFront();
+            foreach (var file in Directory.GetFiles(path))
+            {
+                if (file.Contains(".jar"))
+                {
+
+                    comboBox1.Items.Add(file.Replace(path + "\\", ""));
+                }
+            }
+
+            load_settings();
+            loadinstsettings();
+
+            panel1.MouseMove += new MouseEventHandler(MouseMove2);
+            panel1.MouseDown += new MouseEventHandler(MouseDown2);
+            panel1.MouseUp += new MouseEventHandler(MouseUp2);
+            ApplyButton.Hide();
+        }
+
+        void loadmods()
+        {
+            listView1.Items.Clear();
+            try
+            {
+                foreach (var mod in Directory.GetFiles(path + "\\mods"))
+                {
+                    ListViewItem lw = new ListViewItem();
+                    lw.Tag = mod;
+                    lw.SubItems.Add("");
+                    lw.SubItems.Add("");
+                    lw.SubItems[0].Text = mod.Replace(path + "\\mods\\", "");
+                    if (mod.Contains(".disabled"))
+                    {
+                        lw.SubItems[2].Text = "Disabled";
+                    }
+                    else
+                    {
+                        lw.SubItems[2].Text = "Enabled";
+                    }
+                    listView1.Items.Add(lw);
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+
+
 
 
         /// <summary>
-        /// Startowanie servera
-        /// </summary>
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (type == 0)
-            {
-                string dir = Directory.GetCurrentDirectory();
-                Directory.SetCurrentDirectory(path);
-                Server = new Process();
-                Server.StartInfo.CreateNoWindow = true;
-                Server.StartInfo.UseShellExecute = false;
-
-                Server.StartInfo.FileName = "java";
-                Server.StartInfo.Arguments = "-jar -Xms" + MinRam.Text + "M -Xmx" + MaxRam.Text + "M " + comboBox1.SelectedItem.ToString() + " nogui";
-
-                Server.StartInfo.RedirectStandardInput = true;
-                Server.StartInfo.RedirectStandardOutput = true;
-                Server.StartInfo.RedirectStandardError = true;
-
-                Server.OutputDataReceived += new DataReceivedEventHandler(datarecived);
-                Server.ErrorDataReceived += new DataReceivedEventHandler(datarecived);
-
-                Server.Start();
-                consoleStreamWriter = Server.StandardInput;
-                Server.BeginOutputReadLine();
-                Server.BeginErrorReadLine();
-                Directory.SetCurrentDirectory(dir);
-            }
-            else if(type==1)
-            {
-                try
-                {
-                    shellStream.WriteLine("java -jar -Xms" + MinRam.Text + "M -Xmx" + MaxRam.Text + "M " + comboBox1.SelectedItem.ToString() + " nogui"); shellStream.Flush();
-                }
-                catch
-                {
-                    MessageBox.Show("No server.jar selected!");
-                }
-            }
-        }
-        void datarecived(object sender, DataReceivedEventArgs e)
-        {
-            new Thread(delegate() {
-            UpdateConsoleWindow(e.Data + "\r\n");
-            }).Start();
-        }
-        
-
-        /// <summary>
-        ///Ustawienia serwera!!!
+        ///SERWER SETTINGS
         /// </summary>
         void load_settings()
         {
@@ -172,7 +193,7 @@ namespace MultiServers
                 }
                 File.WriteAllLines(path + "\\server.properties", settings);
                 saveinstance();
-                button4.Hide();
+                ApplyButton.Hide();
             }
             catch
             {
@@ -185,7 +206,7 @@ namespace MultiServers
             ///ZAPISYWANIE USTAWIEN
             List<string> settings = new List<string>();
             settings.Add("server-name=" +Title.Text);
-            settings.Add("server-version=" + inst.label2.Text);
+            settings.Add("server-version=" + inst.VersionLabel.Text);
             settings.Add("xmx=" + MaxRam.Text);
             settings.Add("xms=" + MinRam.Text);
             try
@@ -204,8 +225,8 @@ namespace MultiServers
 
         void loadinstsettings()
         {
-            MaxRam.Text = inst.label6.Text.Replace(" MB","");
-            MinRam.Text = inst.label8.Text.Replace(" MB", "");
+            MaxRam.Text = inst.MaxRamLabel.Text.Replace(" MB","");
+            MinRam.Text = inst.MinRamLabel.Text.Replace(" MB", "");
             try
             {
                 foreach (var line in File.ReadAllLines(path + "\\Instance.info"))
@@ -225,7 +246,14 @@ namespace MultiServers
         /// <summary>
         /// Sekcja zachowania innych obiektow
         /// </summary>
-        private void button3_Click(object sender, EventArgs e)
+        void datarecived(object sender, DataReceivedEventArgs e)
+        {
+            new Thread(delegate () {
+                UpdateConsoleWindow(e.Data + "\r\n");
+            }).Start();
+        }
+
+        private void Enter_Click(object sender, EventArgs e)
         {
             sendcommand(type, textBox1.Text);
             textBox1.Text = "";
@@ -268,54 +296,69 @@ namespace MultiServers
         }
         void sendcommand(int t,string text)
         {
-            if (t == 0)
+            try
             {
-                try
-                {
-                    consoleStreamWriter.WriteLine(text);
-                }
-                catch
-                {
-                }
+                consoleStreamWriter.WriteLine(text);
             }
-            else if (t == 1)
+            catch
             {
-                try
-                {
-                    shellStream.WriteLine(text); shellStream.Flush();
-                }
-                catch
-                {
-                }
             }
         }
-        private void button2_Click(object sender, EventArgs e)
+
+        /*INSTANCE CONTROL*/
+        private void Run_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem.ToString() != null)
+            {
+                string dir = Directory.GetCurrentDirectory();
+                Directory.SetCurrentDirectory(path);
+                Server = new Process();
+                Server.StartInfo.CreateNoWindow = true;
+                Server.StartInfo.UseShellExecute = false;
+
+                Server.StartInfo.FileName = "java";
+                Server.StartInfo.Arguments = "-jar -Xms" + MinRam.Text + "M -Xmx" + MaxRam.Text + "M " + comboBox1.SelectedItem.ToString() + " nogui";
+
+                Server.StartInfo.RedirectStandardInput = true;
+                Server.StartInfo.RedirectStandardOutput = true;
+                Server.StartInfo.RedirectStandardError = true;
+
+                Server.OutputDataReceived += new DataReceivedEventHandler(datarecived);
+                Server.ErrorDataReceived += new DataReceivedEventHandler(datarecived);
+
+                Server.Start();
+                consoleStreamWriter = Server.StandardInput;
+                Server.BeginOutputReadLine();
+                Server.BeginErrorReadLine();
+                Directory.SetCurrentDirectory(dir);
+            }
+
+
+        }
+        private void Stop_Click(object sender, EventArgs e)
         {
             sendcommand(type,"stop");
         }
-        
-        private void button5_Click(object sender, EventArgs e)
-        {
-            if (selectedsettings < settingspanels.Count() - 1) selectedsettings++;
-            settingspanels[selectedsettings].BringToFront();
-        }
 
-        private void button6_Click(object sender, EventArgs e)
+
+        /*INSTANCE SETTINGS CONTROL*/
+        private void Prev_Click(object sender, EventArgs e)
         {
             if (selectedsettings > 0) selectedsettings--;
             settingspanels[selectedsettings].BringToFront();
         }
-
-        private void button7_Click(object sender, EventArgs e)
+        private void Next_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (selectedsettings < settingspanels.Count() - 1) selectedsettings++;
+            settingspanels[selectedsettings].BringToFront();
+        }
+        private void Combo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplyButton.Show();
         }
 
-        private void button10_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
 
+        /*MOVING TITLE*/
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
@@ -341,123 +384,10 @@ namespace MultiServers
             dragging = false;
         }
 
-        private void button7_MouseEnter(object sender, EventArgs e)
-        {
-            Button obj = sender as Button;
-            if (activated)
-            {
-                obj.BackColor = Color.Tomato;
-            }
-        }
 
-        private void button7_MouseLeave(object sender, EventArgs e)
-        {
-            Button obj = sender as Button;
-            if (activated)
-            {
-                obj.BackColor = SystemColors.HotTrack;
-            }
-        }
-        /// <summary>
-        /// Sekcja zachowania mainforma
-        /// </summary>
-        List<Panel> settingspanels = new List<Panel>();
-        public void login(string ip,string login,string password)
-        {
-            
-            try
-            {
-                client = new SshClient(ip, login, password);
-                client.Connect();
-                shellStream = client.CreateShellStream("vt100", 80, 24, 800, 600, 1024);
-                shellStream.DataReceived += new EventHandler<Renci.SshNet.Common.ShellDataEventArgs>(ShellRunner);
-                shellStream.WriteLine("cd " +'"' +Program.program.directory + path.Replace(Program.program.share + @":\", "").Replace("\\", "/") + '"');
-            }
-            catch
-            {
-                
-            }
-            if (client != null)
-            {
-                if (!client.IsConnected)
-                {
-                    LoginForm lf = new LoginForm();
 
-                    lf.Tag = this;
-                    lf.ShowDialog();
-                }
-            }
-        }
-        private void InstanceWindow_Load(object sender, EventArgs e)
-        {
-            loadmods();
-            settingspanels.Add(instSettings);
-            settingspanels.Add(NetworkSettings);
-            settingspanels.Add(ServerSettings);
-            settingspanels.Add(mods);
-            comboBox1.Items.Clear();
-            instSettings.BringToFront();
-            foreach (var file in Directory.GetFiles(path))
-            {
-                if (file.Contains(".jar"))
-                {
-                    
-                    comboBox1.Items.Add(file.Replace(path + "\\", ""));
-                }
-            }
 
-            load_settings();
-            loadinstsettings();
-
-            panel1.MouseMove += new MouseEventHandler(MouseMove2);
-            panel1.MouseDown += new MouseEventHandler(MouseDown2);
-            panel1.MouseUp += new MouseEventHandler(MouseUp2);
-            button4.Hide();
-            if (type == 1)
-            {
-                LoginForm lf = new LoginForm();
-
-                lf.Tag = this;
-                lf.ShowDialog();
-                //richTextBox1.Text = "";
-
-            }
-        }
-
-        void loadmods()
-        {
-            listView1.Items.Clear();
-            try
-            {
-                foreach (var mod in Directory.GetFiles(path + "\\mods"))
-                {
-                    ListViewItem lw = new ListViewItem();
-                    lw.Tag = mod;
-                    lw.SubItems.Add("");
-                    lw.SubItems.Add("");
-                    lw.SubItems[0].Text = mod.Replace(path + "\\mods\\", "");
-                    if (mod.Contains(".disabled"))
-                    {
-                        lw.SubItems[2].Text = "Disabled";
-                    }
-                    else
-                    {
-                        lw.SubItems[2].Text = "Enabled";
-                    }
-                    listView1.Items.Add(lw);
-                }
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void Title_TextChanged(object sender, EventArgs e)
-        {
-            button4.Show();
-        }
-
+        /*MODS CONTROL*/
         private void Button8_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem selected in listView1.SelectedItems)
@@ -501,40 +431,12 @@ namespace MultiServers
             e.Effect = DragDropEffects.Copy;
         }
 
-        private void Button9_Click(object sender, EventArgs e)
+        private void OpenDir_Click(object sender, EventArgs e)
         {
             Process.Start("explorer.exe", "/open, "+ path);
         }
 
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            button4.Show();
-        }
 
-        private void MaxRam_TextChanged(object sender, EventArgs e)
-        {
-            button4.Show();
-        }
-
-        private void MinRam_TextChanged(object sender, EventArgs e)
-        {
-            button4.Show();
-        }
-
-        private void OnlineMode_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            button4.Show();
-        }
-
-        private void IPAddress_TextChanged(object sender, EventArgs e)
-        {
-            button4.Show();
-        }
-
-        private void IPPort_TextChanged(object sender, EventArgs e)
-        {
-            button4.Show();
-        }
 
         private void TextBox1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -545,23 +447,14 @@ namespace MultiServers
             }
         }
 
-        private void MaxPlayer_TextChanged(object sender, EventArgs e)
-        {
-            button4.Show();
-        }
-
-        private void PVP_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            button4.Show();
-        }
 
         private void InstanceWindow_Activated(object sender, EventArgs e)
         {
             panel1.BackColor = SystemColors.HotTrack;
-            button7.BackColor = SystemColors.HotTrack;
-            button7.ForeColor = Color.White;
-            button10.BackColor = SystemColors.HotTrack;
-            button10.ForeColor = Color.White;
+            Exit.BackColor = SystemColors.HotTrack;
+            Exit.ForeColor = Color.White;
+            Minim.BackColor = SystemColors.HotTrack;
+            Minim.ForeColor = Color.White;
             Title.ForeColor = Color.White;
             Title.BackColor = SystemColors.HotTrack;
             iconA.BackColor = SystemColors.HotTrack;
@@ -571,34 +464,24 @@ namespace MultiServers
         private void InstanceWindow_Deactivate(object sender, EventArgs e)
         {
             panel1.BackColor = Color.White;
-            button7.BackColor = Color.White;
-            button7.ForeColor = Color.Gray;
-            button10.BackColor = Color.White;
-            button10.ForeColor = Color.Gray;
+            Exit.BackColor = Color.White;
+            Exit.ForeColor = Color.Gray;
+            Minim.BackColor = Color.White;
+            Minim.ForeColor = Color.Gray;
             Title.BackColor = Color.White;
             Title.ForeColor = Color.Gray;
             iconA.BackColor = Color.White;
             activated = false;
         }
 
-        private void DifficultyCombo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            button4.Show();
-        }
-
-        private void Allowflight_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            button4.Show();
-        }
-
-        private void Enablecommandblocks_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            button4.Show();
-        }
+        
 
         private void InstanceWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            try { client.Disconnect(); Server.Kill(); } catch { }
+            try {
+                Server.Kill(); 
+            } catch { 
+            }
             saveinstance();
         }
     }

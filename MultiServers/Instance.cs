@@ -20,24 +20,25 @@ namespace MultiServers
         {
             InitializeComponent();
             this.type = type;
-            label1.MouseEnter += new EventHandler(Instance_MouseEnter);
-            label2.MouseEnter += new EventHandler(Instance_MouseEnter);
+
+            NameLabel.MouseEnter += new EventHandler(Instance_MouseEnter);
+            VersionLabel.MouseEnter += new EventHandler(Instance_MouseEnter);
             label3.MouseEnter += new EventHandler(Instance_MouseEnter);
             label4.MouseEnter += new EventHandler(Instance_MouseEnter);
             label5.MouseEnter += new EventHandler(Instance_MouseEnter);
-            label6.MouseEnter += new EventHandler(Instance_MouseEnter);
+            MaxRamLabel.MouseEnter += new EventHandler(Instance_MouseEnter);
             label7.MouseEnter += new EventHandler(Instance_MouseEnter);
-            label8.MouseEnter += new EventHandler(Instance_MouseEnter);
+            MinRamLabel.MouseEnter += new EventHandler(Instance_MouseEnter);
 
 
-            label1.MouseLeave += new EventHandler(Instance_MouseLeave);
-            label2.MouseLeave += new EventHandler(Instance_MouseLeave);
+            NameLabel.MouseLeave += new EventHandler(Instance_MouseLeave);
+            VersionLabel.MouseLeave += new EventHandler(Instance_MouseLeave);
             label3.MouseLeave += new EventHandler(Instance_MouseLeave);
             label4.MouseLeave += new EventHandler(Instance_MouseLeave);
             label5.MouseLeave += new EventHandler(Instance_MouseLeave);
-            label6.MouseLeave += new EventHandler(Instance_MouseLeave);
+            MaxRamLabel.MouseLeave += new EventHandler(Instance_MouseLeave);
             label7.MouseLeave += new EventHandler(Instance_MouseLeave);
-            label8.MouseLeave += new EventHandler(Instance_MouseLeave);
+            MinRamLabel.MouseLeave += new EventHandler(Instance_MouseLeave);
         }
 
         private void Instance_MouseEnter(object sender, EventArgs e)
@@ -68,19 +69,10 @@ namespace MultiServers
             
         }
 
-        private void Instance_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Button1_Click(object sender, EventArgs e)
         {
             Process.Start("explorer.exe", "/open, " + this.Tag.ToString());
         }
+
     }
 }

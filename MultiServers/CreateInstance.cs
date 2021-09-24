@@ -45,12 +45,6 @@ namespace MultiServers
 
             string name = "Instances\\" + textBox1.Text;
 
-
-            if (checkBox1.Checked)
-            {
-                name = Program.program.share + ":\\Instances\\" + textBox1.Text;
-            }
-
             
             while (Directory.Exists(name))
             {
