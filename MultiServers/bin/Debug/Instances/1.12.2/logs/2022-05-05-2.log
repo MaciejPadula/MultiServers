@@ -1,0 +1,11 @@
+[22:46:55] [Server thread/INFO]: Starting minecraft server version 1.12.2
+[22:46:55] [Server thread/INFO]: Loading properties
+[22:46:55] [Server thread/INFO]: Default game type: SURVIVAL
+[22:46:55] [Server thread/INFO]: Generating keypair
+[22:46:55] [Server thread/INFO]: Starting Minecraft server on *:25565
+[22:46:55] [Server thread/INFO]: Using default channel type
+[22:46:55] [Server thread/INFO]: Preparing level "world"
+[22:46:56] [Server thread/INFO]: Loaded 488 advancements
+[22:46:56] [Server thread/INFO]: Preparing start region for level 0
+[22:46:57] [Server thread/INFO]: Preparing spawn area: 19%
+[22:46:58] [Server thread/INFO]: Done (2,691s)! For help, type "help" or "?"

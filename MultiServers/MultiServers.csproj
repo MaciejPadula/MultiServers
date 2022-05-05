@@ -60,37 +60,40 @@
     <Compile Include="CreateInstance.Designer.cs">
       <DependentUpon>CreateInstance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Instance\InstanceSettings.cs" />
+    <Compile Include="Instance\SettingsManager.cs" />
     <Compile Include="MultiServers.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MultiServers.Designer.cs">
       <DependentUpon>MultiServers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Instance.cs">
+    <Compile Include="Instance\Instance.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Instance.Designer.cs">
+    <Compile Include="Instance\Instance.Designer.cs">
       <DependentUpon>Instance.cs</DependentUpon>
     </Compile>
-    <Compile Include="InstanceWindow.cs">
+    <Compile Include="Instance\InstanceWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InstanceWindow.Designer.cs">
+    <Compile Include="Instance\InstanceWindow.Designer.cs">
       <DependentUpon>InstanceWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Json.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Instance\Server.cs" />
     <EmbeddedResource Include="CreateInstance.resx">
       <DependentUpon>CreateInstance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MultiServers.resx">
       <DependentUpon>MultiServers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Instance.resx">
+    <EmbeddedResource Include="Instance\Instance.resx">
       <DependentUpon>Instance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InstanceWindow.resx">
+    <EmbeddedResource Include="Instance\InstanceWindow.resx">
       <DependentUpon>InstanceWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

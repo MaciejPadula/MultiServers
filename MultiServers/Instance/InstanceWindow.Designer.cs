@@ -617,10 +617,10 @@
             this.Controls.Add(this.StopButton);
             this.Controls.Add(this.RunButton);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.ServerSettings);
             this.Controls.Add(this.NetworkSettings);
             this.Controls.Add(this.mods);
             this.Controls.Add(this.instSettings);
+            this.Controls.Add(this.ServerSettings);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InstanceWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

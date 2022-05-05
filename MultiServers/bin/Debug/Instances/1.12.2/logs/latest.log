@@ -1,21 +1,11 @@
-[21:53:32] [Server thread/INFO]: Starting minecraft server version 1.12.2
-[21:53:32] [Server thread/INFO]: Loading properties
-[21:53:32] [Server thread/INFO]: Default game type: SURVIVAL
-[21:53:32] [Server thread/INFO]: Generating keypair
-[21:53:32] [Server thread/INFO]: Starting Minecraft server on *:25565
-[21:53:32] [Server thread/INFO]: Using default channel type
-[21:53:32] [Server thread/INFO]: Preparing level "world"
-[21:53:32] [Server thread/INFO]: Loaded 488 advancements
-[21:53:32] [Server thread/INFO]: Preparing start region for level 0
-[21:53:33] [Server thread/INFO]: Done (0,969s)! For help, type "help" or "?"
-[21:53:36] [Server thread/INFO]: Stopping the server
-[21:53:36] [Server thread/INFO]: Stopping server
-[21:53:36] [Server thread/INFO]: Saving players
-[21:53:36] [Server thread/INFO]: Saving worlds
-[21:53:36] [Server thread/INFO]: Saving chunks for level 'world'/overworld
-[21:53:36] [Server thread/INFO]: Saving chunks for level 'world'/the_nether
-[21:53:36] [Server thread/INFO]: Saving chunks for level 'world'/the_end
-[21:53:36] [Server Shutdown Thread/INFO]: Stopping server
-[21:53:36] [Server Shutdown Thread/INFO]: Saving players
-[21:53:36] [Server Shutdown Thread/INFO]: Saving worlds
-[21:53:36] [Server Shutdown Thread/INFO]: Saving chunks for level 'world'/overworld
+[22:49:58] [Server thread/INFO]: Starting minecraft server version 1.12.2
+[22:49:58] [Server thread/INFO]: Loading properties
+[22:49:58] [Server thread/INFO]: Default game type: SURVIVAL
+[22:49:58] [Server thread/INFO]: Generating keypair
+[22:49:58] [Server thread/INFO]: Starting Minecraft server on *:25565
+[22:49:58] [Server thread/INFO]: Using default channel type
+[22:49:58] [Server thread/WARN]: **** FAILED TO BIND TO PORT!
+[22:49:58] [Server thread/WARN]: The exception was: java.net.BindException: Address already in use: bind
+[22:49:58] [Server thread/WARN]: Perhaps a server is already running on that port?
+[22:49:58] [Server thread/INFO]: Stopping server
+[22:49:58] [Server Shutdown Thread/INFO]: Stopping server

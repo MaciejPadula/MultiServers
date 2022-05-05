@@ -16,9 +16,8 @@ namespace MultiServers
     public partial class InstanceWindow : Form
     {
         string path;
-        Process Server = new Process();
-        StreamWriter consoleStreamWriter = null;
-        delegate void UpdateConsoleWindowDelegate(String msg);
+        Server server;
+        InstanceSettings instanceSettings;
         Instance inst;
         int selectedsettings = 0, type = 0;
         bool activated = true;
@@ -26,10 +25,32 @@ namespace MultiServers
         public InstanceWindow(string path, Instance inst, int type)
         {
             InitializeComponent();
+            instanceSettings = SettingsManager.readInstanceSettings(path);
             this.path = path;
             this.inst = inst;
             this.type = type;
+            server = new Server(path, "", "", "");
+            server.DataRead += UpdateConsoleWindow;
 
+            foreach (var file in Directory.GetFiles(path))
+            {
+                if (file.Contains(".jar"))
+                {
+                    comboBox1.Items.Add(file.Replace(path + "\\", ""));
+                }
+            }
+
+            this.IPAddress.Text = instanceSettings.getIpAddress();
+            this.IPPort.Text = instanceSettings.getServerPort();
+            this.OnlineMode.SelectedIndex = Convert.ToInt32(instanceSettings.getOnlineMode());
+            this.enablecommandblocks.SelectedIndex = Convert.ToInt32(instanceSettings.getEnableCommandBlock());
+            this.MaxPlayer.Text = instanceSettings.getMaxPlayers().ToString();
+            this.PVP.SelectedIndex = Convert.ToInt32(instanceSettings.getPvp());
+            this.allowflight.SelectedIndex = Convert.ToInt32(instanceSettings.getAllowFlight());
+            this.difficultyCombo.SelectedIndex = instanceSettings.getDifficulty();
+            this.MinRam.Text = instanceSettings.getXms();
+            this.MaxRam.Text = instanceSettings.getXmx();
+            this.comboBox1.SelectedItem = instanceSettings.getJarFile();
         }
         /*TITLE PANEL*/
         private void Minim_Click(object sender, EventArgs e)
@@ -66,19 +87,8 @@ namespace MultiServers
             settingspanels.Add(NetworkSettings);
             settingspanels.Add(ServerSettings);
             settingspanels.Add(mods);
-            comboBox1.Items.Clear();
             instSettings.BringToFront();
-            foreach (var file in Directory.GetFiles(path))
-            {
-                if (file.Contains(".jar"))
-                {
-
-                    comboBox1.Items.Add(file.Replace(path + "\\", ""));
-                }
-            }
-
-            load_settings();
-            loadinstsettings();
+            
 
             panel1.MouseMove += new MouseEventHandler(MouseMove2);
             panel1.MouseDown += new MouseEventHandler(MouseDown2);
@@ -115,58 +125,6 @@ namespace MultiServers
             }
         }
 
-
-
-
-
-        /// <summary>
-        ///SERWER SETTINGS
-        /// </summary>
-        void load_settings()
-        {
-            try
-            {
-                foreach (var line in File.ReadAllLines(path + "\\server.properties"))
-                {
-                    if (line.Contains("server-ip="))
-                    {
-                        IPAddress.Text = line.Replace("server-ip=","");
-                    }
-                    if (line.Contains("server-port="))
-                    {
-                        IPPort.Text = line.Replace("server-port=", "");
-                    }
-                    if (line.Contains("online-mode="))
-                    {
-                        OnlineMode.SelectedItem = line.Replace("online-mode=", "");
-                    }
-                    if (line.Contains("pvp="))
-                    {
-                        PVP.SelectedItem = line.Replace("pvp=", "");
-                    }
-                    if (line.Contains("max-players="))
-                    {
-                        MaxPlayer.Text = line.Replace("max-players=", "");
-                    }
-                    if (line.Contains("difficulty="))
-                    {
-                        difficultyCombo.SelectedIndex = int.Parse(line.Replace("difficulty=", ""));
-                    }
-                    if (line.Contains("allow-flight="))
-                    {
-                        allowflight.SelectedItem = line.Replace("allow-flight=", "");
-                    }
-                    if (line.Contains("enable-command-block="))
-                    {
-                        enablecommandblocks.SelectedItem = line.Replace("enable-command-block=", "");
-                    }
-                }
-            }
-            catch
-            {
-
-            }
-        }
         private void SaveSettings(object sender, EventArgs e)
         {
             try
@@ -222,39 +180,12 @@ namespace MultiServers
             this.BringToFront();
         }
 
-        void loadinstsettings()
-        {
-            MaxRam.Text = inst.MaxRamLabel.Text.Replace(" MB","");
-            MinRam.Text = inst.MinRamLabel.Text.Replace(" MB", "");
-            try
-            {
-                foreach (var line in File.ReadAllLines(path + "\\Instance.info"))
-                {
-                    if (line.Contains("server-jar="))
-                    {
-                        comboBox1.SelectedItem = line.Replace("server-jar=","");
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Blednie utworzona instancja!");
-            }
-        }
-
         /// <summary>
         /// Sekcja zachowania innych obiektow
         /// </summary>
-        void datarecived(object sender, DataReceivedEventArgs e)
-        {
-            new Thread(delegate () {
-                UpdateConsoleWindow(e.Data + "\r\n");
-            }).Start();
-        }
-
         private void Enter_Click(object sender, EventArgs e)
         {
-            sendcommand(type, textBox1.Text);
+            server.sendCommand(textBox1.Text);
             textBox1.Text = "";
             textBox1.Focus();
         }
@@ -266,42 +197,12 @@ namespace MultiServers
             richTextBox1.ScrollToCaret();
         }
 
-        private void UpdateConsoleWindow(String message)
+        private void UpdateConsoleWindow(object sender, DataReadEventArgs e)
         {
-            //new Thread(new Delegate(){
-            try
+            richTextBox1.Invoke(new Action(delegate ()
             {
-                if (richTextBox1.InvokeRequired)
-                {
-                    UpdateConsoleWindowDelegate update = new UpdateConsoleWindowDelegate(UpdateConsoleWindow);
-                    richTextBox1.Invoke(update, message);
-                }
-                else
-                {
-                    try
-                    {
-                        richTextBox1.AppendText(message);
-                    }
-                    catch
-                    {
-                    }
-
-                }
-            }
-            catch
-            {
-
-            }
-        }
-        void sendcommand(int t,string text)
-        {
-            try
-            {
-                consoleStreamWriter.WriteLine(text);
-            }
-            catch
-            {
-            }
+                richTextBox1.AppendText(e.getMessage());
+            }));
         }
 
         /*INSTANCE CONTROL*/
@@ -311,24 +212,14 @@ namespace MultiServers
             {
                 string dir = Directory.GetCurrentDirectory();
                 Directory.SetCurrentDirectory(path);
-                Server = new Process();
-                Server.StartInfo.CreateNoWindow = true;
-                Server.StartInfo.UseShellExecute = false;
 
-                Server.StartInfo.FileName = "java";
-                Server.StartInfo.Arguments = "-jar -Xms" + MinRam.Text + "M -Xmx" + MaxRam.Text + "M " + comboBox1.SelectedItem.ToString() + " nogui";
-
-                Server.StartInfo.RedirectStandardInput = true;
-                Server.StartInfo.RedirectStandardOutput = true;
-                Server.StartInfo.RedirectStandardError = true;
-
-                Server.OutputDataReceived += new DataReceivedEventHandler(datarecived);
-                Server.ErrorDataReceived += new DataReceivedEventHandler(datarecived);
-
-                Server.Start();
-                consoleStreamWriter = Server.StandardInput;
-                Server.BeginOutputReadLine();
-                Server.BeginErrorReadLine();
+                //Server.StartInfo.Arguments = "-jar -Xms" + MinRam.Text + "M -Xmx" + MaxRam.Text + "M " + comboBox1.SelectedItem.ToString() + " nogui";
+                server
+                    .setJarFile(comboBox1.SelectedItem.ToString())
+                    .setXMX(MaxRam.Text)
+                    .setXMS(MinRam.Text)
+                    .runServer();
+                
                 Directory.SetCurrentDirectory(dir);
             }
 
@@ -336,7 +227,7 @@ namespace MultiServers
         }
         private void Stop_Click(object sender, EventArgs e)
         {
-            sendcommand(type,"stop");
+            server.sendCommand("stop");
         }
 
 
@@ -441,7 +332,7 @@ namespace MultiServers
         {
             if (e.KeyCode == Keys.Enter)
             {
-                sendcommand(type, textBox1.Text);
+                server.sendCommand(textBox1.Text);
                 textBox1.Text = "";
             }
         }
@@ -461,7 +352,7 @@ namespace MultiServers
         private void InstanceWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             try {
-                Server.Kill(); 
+                server.killServer(); 
             } catch { 
             }
             saveinstance();
