@@ -1,10 +1,12 @@
 ﻿using System;
-
+using System.Collections.Generic;
 
 namespace MultiServers
 {
     public class InstanceSettings
     {
+        private String serverName;
+        private String serverVersion;
         private String jarFile;
         private String xmx;
         private String xms;
@@ -16,6 +18,25 @@ namespace MultiServers
         private int difficulty;
         private bool allowFlight;
         private bool enableCommandBlock;
+        private List<String> otherSettings = new List<string>();
+        public InstanceSettings setServerName(String serverName)
+        {
+            this.serverName = serverName;
+            return this;
+        }
+        public String getServerName()
+        {
+            return this.serverName;
+        }
+        public InstanceSettings setServerVersion(String serverVersion)
+        {
+            this.serverVersion = serverVersion;
+            return this;
+        }
+        public String getServerVersion()
+        {
+            return this.serverVersion;
+        }
         public InstanceSettings setJarFile(String jarFile)
         {
             this.jarFile = jarFile;
@@ -115,7 +136,15 @@ namespace MultiServers
         {
             return this.enableCommandBlock;
         }
-
+        public InstanceSettings addOtherSettings(String line)
+        {
+            this.otherSettings.Add(line);
+            return this;
+        }
+        public List<String> getOtherSettings()
+        {
+            return this.otherSettings;
+        }
 
 
     }

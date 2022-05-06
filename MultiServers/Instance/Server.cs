@@ -48,7 +48,7 @@ namespace MultiServers
             serverProcess.StartInfo.UseShellExecute = false;
 
             serverProcess.StartInfo.FileName = "java";
-            serverProcess.StartInfo.Arguments = "-jar -Xms" + this.xms + " -Xmx" + xmx + " " + jarFile + " nogui";
+            serverProcess.StartInfo.Arguments = "-jar -Xms" + this.xms + "M -Xmx" + xmx + "M " + jarFile + " nogui";
 
             serverProcess.StartInfo.RedirectStandardInput = true;
             serverProcess.StartInfo.RedirectStandardOutput = true;

@@ -127,57 +127,25 @@ namespace MultiServers
 
         private void SaveSettings(object sender, EventArgs e)
         {
-            try
-            {
-                List<string> settings = new List<string>();
-                settings.Add("server-ip=" + IPAddress.Text);
-                settings.Add("server-port=" + IPPort.Text);
-                settings.Add("online-mode=" + OnlineMode.SelectedItem.ToString());
-                settings.Add("pvp=" + PVP.SelectedItem.ToString());
-                settings.Add("max-players=" + MaxPlayer.Text);
-                settings.Add("difficulty=" + difficultyCombo.SelectedIndex);
-                settings.Add("allow-flight=" + allowflight.SelectedItem.ToString());
-                settings.Add("enable-command-block=" + enablecommandblocks.SelectedItem.ToString());
-                base.Text = Title.Text;
-            
-                foreach (var line in File.ReadAllLines(path + "\\server.properties"))
-                {
-                    if (!line.Contains("enable-command-block=") && !line.Contains("allow-flight=") && !line.Contains("difficulty=") && !line.Contains("server-ip=") && !line.Contains("server-port=") && !line.Contains("online-mode=") && !line.Contains("pvp=") && !line.Contains("max-players="))
-                    {
-                        settings.Add(line);
-                    }
+            instanceSettings
+                .setAllowFlight(Convert.ToBoolean(allowflight.SelectedIndex))
+                .setDifficulty(difficultyCombo.SelectedIndex)
+                .setEnableCommandBlock(Convert.ToBoolean(enablecommandblocks.SelectedIndex))
+                .setIpAddress(IPAddress.Text)
+                .setMaxPlayers(int.Parse(MaxPlayer.Text))
+                .setOnlineMode(Convert.ToBoolean(OnlineMode.SelectedIndex))
+                .setPvp(Convert.ToBoolean(PVP.SelectedIndex))
+                .setServerName(inst.NameLabel.Text)
+                .setServerPort(IPPort.Text)
+                .setServerVersion(inst.VersionLabel.Text)
+                .setXmx(MaxRam.Text)
+                .setXms(MinRam.Text)
+                .setJarFile(comboBox1.SelectedItem.ToString());
 
-                }
-                File.WriteAllLines(path + "\\server.properties", settings);
-                saveinstance();
-                ApplyButton.Hide();
-            }
-            catch
-            {
-
-            }
-        }
-
-        void saveinstance()
-        {
-            ///ZAPISYWANIE USTAWIEN
-            List<string> settings = new List<string>();
-            settings.Add("server-name=" +Title.Text);
-            settings.Add("server-version=" + inst.VersionLabel.Text);
-            settings.Add("xmx=" + MaxRam.Text);
-            settings.Add("xms=" + MinRam.Text);
-            try
-            {
-                settings.Add("server-jar=" + comboBox1.SelectedItem.ToString());
-            }
-            catch
-            {
-
-            }
-            File.WriteAllLines(path + "\\Instance.info", settings);
-
+            SettingsManager.saveSettings(path, instanceSettings);
             Program.program.loadinstances();
             this.BringToFront();
+            ApplyButton.Hide();
         }
 
         /// <summary>
@@ -355,7 +323,6 @@ namespace MultiServers
                 server.killServer(); 
             } catch { 
             }
-            saveinstance();
         }
     }
 }
