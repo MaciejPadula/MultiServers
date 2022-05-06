@@ -1,5 +1,0 @@
-server-name=test
-server-version=1.2.5
-xmx=2048
-xms=2048
-server-jar=minecraft_server.1.2.5.jar

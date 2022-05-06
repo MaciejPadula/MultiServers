@@ -1,0 +1,15 @@
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\bin\Release\MultiServers.exe.config
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\bin\Release\MultiServers.exe
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\bin\Release\MultiServers.pdb
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\bin\Release\Newtonsoft.Json.dll
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Release\MultiServers.csproj.AssemblyReference.cache
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Release\MultiServers.InstanceCreation.CreateInstance.resources
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Release\MultiServers.MultiServers.resources
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Release\MultiServers.InstanceManagement.Instance.resources
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Release\MultiServers.InstanceManagement.InstanceWindow.resources
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Release\MultiServers.Properties.Resources.resources
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Release\MultiServers.csproj.GenerateResource.cache
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Release\MultiServers.csproj.CoreCompileInputs.cache
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Release\MultiServers.csproj.CopyComplete
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Release\MultiServers.exe
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Release\MultiServers.pdb

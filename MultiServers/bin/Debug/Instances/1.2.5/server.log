@@ -1,0 +1,131 @@
+2022-05-06 15:30:26 [INFO] Starting minecraft server version 1.2.5
+2022-05-06 15:30:26 [INFO] Loading properties
+2022-05-06 15:30:26 [INFO] Starting Minecraft server on *:25565
+2022-05-06 15:30:26 [WARNING] Failed to load ban list: java.io.FileNotFoundException: banned-players.txt (Nie mo¿na odnaleŸæ okreœlonego pliku)
+2022-05-06 15:30:26 [WARNING] Failed to load ip ban list: java.io.FileNotFoundException: banned-ips.txt (Nie mo¿na odnaleŸæ okreœlonego pliku)
+2022-05-06 15:30:26 [WARNING] Failed to load operators list: java.io.FileNotFoundException: ops.txt (Nie mo¿na odnaleŸæ okreœlonego pliku)
+2022-05-06 15:30:26 [WARNING] Failed to load white-list: java.io.FileNotFoundException: white-list.txt (Nie mo¿na odnaleŸæ okreœlonego pliku)
+2022-05-06 15:30:26 [INFO] Preparing level "world"
+2022-05-06 15:30:26 [INFO] Default game type: 0
+2022-05-06 15:30:26 [INFO] Preparing start region for level 0
+2022-05-06 15:30:27 [INFO] Preparing spawn area: 32%
+2022-05-06 15:30:28 [INFO] Preparing spawn area: 65%
+2022-05-06 15:30:29 [INFO] Done (3,126s)! For help, type "help" or "?"
+2022-05-06 15:30:32 [INFO] CONSOLE: Stopping the server..
+2022-05-06 15:30:32 [INFO] Stopping server
+2022-05-06 15:30:32 [INFO] Saving chunks
+2022-05-06 15:30:37 [INFO] Saving chunks
+2022-05-06 15:30:37 [INFO] Saving chunks
+2022-05-06 15:31:39 [INFO] Starting minecraft server version 1.2.5
+2022-05-06 15:31:39 [INFO] Loading properties
+2022-05-06 15:31:39 [INFO] Starting Minecraft server on *:25567
+2022-05-06 15:31:39 [INFO] Preparing level "world"
+2022-05-06 15:31:39 [INFO] Default game type: 0
+2022-05-06 15:31:39 [INFO] Preparing start region for level 0
+2022-05-06 15:31:40 [INFO] Preparing spawn area: 36%
+2022-05-06 15:31:42 [INFO] Preparing spawn area: 85%
+2022-05-06 15:31:42 [INFO] Done (2,456s)! For help, type "help" or "?"
+2022-05-06 15:31:44 [INFO] CONSOLE: Stopping the server..
+2022-05-06 15:31:44 [INFO] Stopping server
+2022-05-06 15:31:44 [INFO] Saving chunks
+2022-05-06 15:31:49 [INFO] Saving chunks
+2022-05-06 15:31:49 [INFO] Saving chunks
+2022-05-06 15:33:33 [INFO] Starting minecraft server version 1.2.5
+2022-05-06 15:33:33 [INFO] Loading properties
+2022-05-06 15:33:33 [INFO] Starting Minecraft server on *:25567
+2022-05-06 15:33:33 [INFO] Preparing level "world"
+2022-05-06 15:33:33 [INFO] Default game type: 0
+2022-05-06 15:33:33 [INFO] Preparing start region for level 0
+2022-05-06 15:33:33 [INFO] Done (0,863s)! For help, type "help" or "?"
+2022-05-06 15:33:36 [INFO] CONSOLE: Stopping the server..
+2022-05-06 15:33:36 [INFO] Stopping server
+2022-05-06 15:33:36 [INFO] Saving chunks
+2022-05-06 15:33:36 [INFO] Saving chunks
+2022-05-06 15:33:36 [INFO] Saving chunks
+2022-05-06 15:33:48 [INFO] Starting minecraft server version 1.2.5
+2022-05-06 15:33:48 [INFO] Loading properties
+2022-05-06 15:33:48 [INFO] Starting Minecraft server on *:25565
+2022-05-06 15:33:48 [INFO] Preparing level "world"
+2022-05-06 15:33:48 [INFO] Default game type: 0
+2022-05-06 15:33:48 [INFO] Preparing start region for level 0
+2022-05-06 15:33:49 [INFO] Done (0,831s)! For help, type "help" or "?"
+2022-05-06 15:33:55 [INFO] CONSOLE: Stopping the server..
+2022-05-06 15:33:55 [INFO] Stopping server
+2022-05-06 15:33:55 [INFO] Saving chunks
+2022-05-06 15:33:56 [INFO] Saving chunks
+2022-05-06 15:33:56 [INFO] Saving chunks
+2022-05-06 15:34:06 [INFO] Starting minecraft server version 1.2.5
+2022-05-06 15:34:06 [INFO] Loading properties
+2022-05-06 15:34:06 [INFO] Starting Minecraft server on *:25565
+2022-05-06 15:34:06 [INFO] Preparing level "world"
+2022-05-06 15:34:06 [INFO] Default game type: 0
+2022-05-06 15:34:06 [INFO] Preparing start region for level 0
+2022-05-06 15:34:07 [INFO] Done (0,721s)! For help, type "help" or "?"
+2022-05-06 15:34:09 [INFO] To run the server without a gui, start it like this:
+2022-05-06 15:34:09 [INFO]    java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui
+2022-05-06 15:34:09 [INFO] Console commands:
+2022-05-06 15:34:09 [INFO]    help  or  ?               shows this message
+2022-05-06 15:34:09 [INFO]    kick <player>             removes a player from the server
+2022-05-06 15:34:09 [INFO]    ban <player>              bans a player from the server
+2022-05-06 15:34:09 [INFO]    pardon <player>           pardons a banned player so that they can connect again
+2022-05-06 15:34:09 [INFO]    ban-ip <ip>               bans an IP address from the server
+2022-05-06 15:34:09 [INFO]    pardon-ip <ip>            pardons a banned IP address so that they can connect again
+2022-05-06 15:34:09 [INFO]    op <player>               turns a player into an op
+2022-05-06 15:34:09 [INFO]    deop <player>             removes op status from a player
+2022-05-06 15:34:09 [INFO]    tp <player1> <player2>    moves one player to the same location as another player
+2022-05-06 15:34:09 [INFO]    give <player> <id> [num]  gives a player a resource
+2022-05-06 15:34:09 [INFO]    tell <player> <message>   sends a private message to a player
+2022-05-06 15:34:09 [INFO]    stop                      gracefully stops the server
+2022-05-06 15:34:09 [INFO]    save-all                  forces a server-wide level save
+2022-05-06 15:34:09 [INFO]    save-off                  disables terrain saving (useful for backup scripts)
+2022-05-06 15:34:09 [INFO]    save-on                   re-enables terrain saving
+2022-05-06 15:34:09 [INFO]    list                      lists all currently connected players
+2022-05-06 15:34:09 [INFO]    say <message>             broadcasts a message to all players
+2022-05-06 15:34:09 [INFO]    time <add|set> <amount>   adds to or sets the world time (0-24000)
+2022-05-06 15:34:09 [INFO]    gamemode <player> <mode>  sets player's game mode (0 or 1)
+2022-05-06 15:34:09 [INFO]    toggledownfall            toggles rain on or off
+2022-05-06 15:34:09 [INFO]    xp <player> <amount>      gives the player the amount of xp (0-5000)
+2022-05-06 15:34:15 [INFO] [CONSOLE] test
+2022-05-06 15:34:17 [INFO] CONSOLE: Stopping the server..
+2022-05-06 15:34:17 [INFO] Stopping server
+2022-05-06 15:34:17 [INFO] Saving chunks
+2022-05-06 15:34:17 [INFO] Saving chunks
+2022-05-06 15:34:17 [INFO] Saving chunks
+2022-05-06 15:34:39 [INFO] Starting minecraft server version 1.2.5
+2022-05-06 15:34:39 [INFO] Loading properties
+2022-05-06 15:34:39 [INFO] Starting Minecraft server on *:25565
+2022-05-06 15:34:39 [INFO] Preparing level "world"
+2022-05-06 15:34:39 [INFO] Default game type: 0
+2022-05-06 15:34:39 [INFO] Preparing start region for level 0
+2022-05-06 15:34:39 [INFO] Done (0,577s)! For help, type "help" or "?"
+2022-05-06 15:34:42 [INFO] To run the server without a gui, start it like this:
+2022-05-06 15:34:42 [INFO]    java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui
+2022-05-06 15:34:42 [INFO] Console commands:
+2022-05-06 15:34:42 [INFO]    help  or  ?               shows this message
+2022-05-06 15:34:42 [INFO]    kick <player>             removes a player from the server
+2022-05-06 15:34:42 [INFO]    ban <player>              bans a player from the server
+2022-05-06 15:34:42 [INFO]    pardon <player>           pardons a banned player so that they can connect again
+2022-05-06 15:34:42 [INFO]    ban-ip <ip>               bans an IP address from the server
+2022-05-06 15:34:42 [INFO]    pardon-ip <ip>            pardons a banned IP address so that they can connect again
+2022-05-06 15:34:42 [INFO]    op <player>               turns a player into an op
+2022-05-06 15:34:42 [INFO]    deop <player>             removes op status from a player
+2022-05-06 15:34:42 [INFO]    tp <player1> <player2>    moves one player to the same location as another player
+2022-05-06 15:34:42 [INFO]    give <player> <id> [num]  gives a player a resource
+2022-05-06 15:34:42 [INFO]    tell <player> <message>   sends a private message to a player
+2022-05-06 15:34:42 [INFO]    stop                      gracefully stops the server
+2022-05-06 15:34:42 [INFO]    save-all                  forces a server-wide level save
+2022-05-06 15:34:42 [INFO]    save-off                  disables terrain saving (useful for backup scripts)
+2022-05-06 15:34:42 [INFO]    save-on                   re-enables terrain saving
+2022-05-06 15:34:42 [INFO]    list                      lists all currently connected players
+2022-05-06 15:34:42 [INFO]    say <message>             broadcasts a message to all players
+2022-05-06 15:34:42 [INFO]    time <add|set> <amount>   adds to or sets the world time (0-24000)
+2022-05-06 15:34:42 [INFO]    gamemode <player> <mode>  sets player's game mode (0 or 1)
+2022-05-06 15:34:42 [INFO]    toggledownfall            toggles rain on or off
+2022-05-06 15:34:42 [INFO]    xp <player> <amount>      gives the player the amount of xp (0-5000)
+2022-05-06 15:34:46 [INFO] Unknown console command. Type "help" for help.
+2022-05-06 15:34:52 [INFO] Unknown console command. Type "help" for help.
+2022-05-06 15:34:55 [INFO] CONSOLE: Stopping the server..
+2022-05-06 15:34:55 [INFO] Stopping server
+2022-05-06 15:34:55 [INFO] Saving chunks
+2022-05-06 15:34:55 [INFO] Saving chunks
+2022-05-06 15:34:55 [INFO] Saving chunks

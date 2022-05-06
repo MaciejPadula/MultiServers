@@ -17,10 +17,7 @@ D:\Dulik\Documents\Projects\C#\MultiServers\MultiServers\obj\Debug\MultiServers.
 D:\Dulik\Documents\Projects\C#\MultiServers\MultiServers\obj\Debug\MultiServers.MultiServers.resources
 D:\Dulik\Documents\Projects\C#\MultiServers\MultiServers\obj\Debug\MultiServers.LoginForm.resources
 D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.csproj.AssemblyReference.cache
-D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.CreateInstance.resources
 D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.MultiServers.resources
-D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.Instance.resources
-D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.InstanceWindow.resources
 D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.Properties.Resources.resources
 D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.csproj.GenerateResource.cache
 D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.csproj.CoreCompileInputs.cache
@@ -46,3 +43,6 @@ C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers
 C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.csproj.CopyComplete
 C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.exe
 C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.pdb
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.InstanceManagement.Instance.resources
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.InstanceManagement.InstanceWindow.resources
+D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.InstanceCreation.CreateInstance.resources
