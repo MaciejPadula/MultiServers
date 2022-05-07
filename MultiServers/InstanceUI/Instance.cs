@@ -103,5 +103,10 @@ namespace MultiServers.InstanceUI
         {
             Process.Start("explorer.exe", "/open, " + path);
         }
+        public void killServer()
+        {
+            this.window.killServer();
+            this.window.Close();
+        }
     }
 }

@@ -125,6 +125,7 @@
             this.Name = "MultiServers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MultiServers";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MultiServers_FormClosing);
             this.Load += new System.EventHandler(this.MultiServers_Load);
             this.navbar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -164,7 +164,7 @@ namespace MultiServers.InstanceUI
         }
         private void run_Click(object sender, EventArgs e)
         {
-            if (jarFileComboBox.SelectedItem.ToString() != null)
+            if (jarFileComboBox.SelectedItem != null)
             {
                 string dir = Directory.GetCurrentDirectory();
                 Directory.SetCurrentDirectory(path);
@@ -178,6 +178,14 @@ namespace MultiServers.InstanceUI
                 
                 Directory.SetCurrentDirectory(dir);
             }
+            else
+            {
+                MessageBox.Show("Select server jar file first!", "Warning!");
+            }
+        }
+        public void killServer()
+        {
+            this.server.killServer();
         }
         private void stop_Click(object sender, EventArgs e)
         {
@@ -272,11 +280,11 @@ namespace MultiServers.InstanceUI
         }
         private void Exit_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
                 this.server.killServer();
             }
-            catch { }
+            catch { }*/
             
             this.Hide();
         }

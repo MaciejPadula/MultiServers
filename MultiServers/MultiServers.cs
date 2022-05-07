@@ -52,5 +52,13 @@ namespace MultiServers
         {
             createInstance.ShowDialog();
         }
+
+        private void MultiServers_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            foreach(Instance instance in instancePanel.Controls)
+            {
+                instance.killServer();
+            }
+        }
     }
 }
