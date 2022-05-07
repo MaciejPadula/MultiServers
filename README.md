@@ -4,7 +4,7 @@ MultiServers is a minecraft servers manager. You can create multiple servers on 
 
 # Creating new instance:
 To create new instance click + button and select server name and version, then click Create.
-![image](https://user-images.githubusercontent.com/50674232/167147025-1163e5bd-2ab1-4215-9db1-badc87da7be7.png)
+![image](https://user-images.githubusercontent.com/50674232/167270045-d1f3e3a5-8aa2-411f-b672-37f98f9c5ad8.png)
 ![image](https://user-images.githubusercontent.com/50674232/167147080-e0d693e3-8f63-4c30-81ec-8199fad13c32.png)
 ![image](https://user-images.githubusercontent.com/50674232/167147106-0ce57c7b-f94c-4b64-a808-6f5de1d33aeb.png)
 
@@ -15,9 +15,11 @@ To create new instance click + button and select server name and version, then c
 
 
 # Basic Server Settings:
-![image](https://user-images.githubusercontent.com/50674232/167147277-7aead75a-de61-489a-8386-d0e63e2fdcae.png)
-![image](https://user-images.githubusercontent.com/50674232/167147377-5b751170-45c7-4eff-b20e-52554b2544ff.png)
-![image](https://user-images.githubusercontent.com/50674232/167147410-d7cf5fea-b064-435b-9b29-09236e661838.png)
+![image](https://user-images.githubusercontent.com/50674232/167270016-c6cabf63-4550-4727-9d71-506e16950940.png)
+![image](https://user-images.githubusercontent.com/50674232/167269995-91e7ea19-9fe4-424a-a50a-06688549189b.png)
+![image](https://user-images.githubusercontent.com/50674232/167269980-173174de-8ad9-47cb-a9a2-c96b7f7bb37a.png)
+
+
 
 
 
