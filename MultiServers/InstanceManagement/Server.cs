@@ -64,6 +64,7 @@ namespace MultiServers.InstanceManagement
         }
         public void killServer()
         {
+            //this.sendCommand("stop");
             this.serverProcess.Kill();
         }
         void datarecived(object sender, DataReceivedEventArgs e)

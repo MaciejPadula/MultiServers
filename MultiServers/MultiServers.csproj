@@ -54,13 +54,20 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InstanceCreation\CreateInstance.cs">
+    <Compile Include="InstanceManagement\CreateInstance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InstanceCreation\CreateInstance.Designer.cs">
+    <Compile Include="InstanceManagement\CreateInstance.Designer.cs">
       <DependentUpon>CreateInstance.cs</DependentUpon>
     </Compile>
     <Compile Include="InstanceManagement\InstanceSettings.cs" />
+    <Compile Include="InstanceUI\ProgressBarDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InstanceUI\ProgressBarDialog.Designer.cs">
+      <DependentUpon>ProgressBarDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JSONObjects\MCVersionJSON\MCVersionJSON.cs" />
     <Compile Include="InstanceManagement\SettingsManager.cs" />
     <Compile Include="MultiServers.cs">
       <SubType>Form</SubType>
@@ -68,33 +75,36 @@
     <Compile Include="MultiServers.Designer.cs">
       <DependentUpon>MultiServers.cs</DependentUpon>
     </Compile>
-    <Compile Include="InstanceManagement\Instance.cs">
+    <Compile Include="InstanceUI\Instance.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="InstanceManagement\Instance.Designer.cs">
+    <Compile Include="InstanceUI\Instance.Designer.cs">
       <DependentUpon>Instance.cs</DependentUpon>
     </Compile>
-    <Compile Include="InstanceManagement\InstanceWindow.cs">
+    <Compile Include="InstanceUI\InstanceWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InstanceManagement\InstanceWindow.Designer.cs">
+    <Compile Include="InstanceUI\InstanceWindow.Designer.cs">
       <DependentUpon>InstanceWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="InstanceCreation\Json.cs" />
+    <Compile Include="JSONObjects\MCRepoJSON\MCRepoJSON.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InstanceManagement\Server.cs" />
     <Compile Include="Props.cs" />
-    <EmbeddedResource Include="InstanceCreation\CreateInstance.resx">
+    <EmbeddedResource Include="InstanceManagement\CreateInstance.resx">
       <DependentUpon>CreateInstance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstanceUI\ProgressBarDialog.resx">
+      <DependentUpon>ProgressBarDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MultiServers.resx">
       <DependentUpon>MultiServers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InstanceManagement\Instance.resx">
+    <EmbeddedResource Include="InstanceUI\Instance.resx">
       <DependentUpon>Instance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InstanceManagement\InstanceWindow.resx">
+    <EmbeddedResource Include="InstanceUI\InstanceWindow.resx">
       <DependentUpon>InstanceWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

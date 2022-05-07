@@ -10,12 +10,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MultiServers.InstanceCreation;
 using MultiServers.InstanceManagement;
+using MultiServers.InstanceUI;
+
 namespace MultiServers
 {
     public partial class MultiServers : Form
     {
+        CreateInstance createInstance;
         public MultiServers()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace MultiServers
             }
 
             Props.mainPath = Directory.GetCurrentDirectory();
-
+            createInstance = new CreateInstance();
             loadInstances();
             
         }
@@ -48,8 +50,7 @@ namespace MultiServers
         }
         private void newInstance_Click(object sender, EventArgs e)
         {
-            CreateInstance ci = new CreateInstance();
-            ci.ShowDialog();
+            createInstance.ShowDialog();
         }
     }
 }
