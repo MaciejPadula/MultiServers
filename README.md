@@ -15,9 +15,10 @@ To create new instance click + button and select server name and version, then c
 
 
 # Basic Server Settings:
-![image](https://user-images.githubusercontent.com/50674232/167270016-c6cabf63-4550-4727-9d71-506e16950940.png)
-![image](https://user-images.githubusercontent.com/50674232/167269995-91e7ea19-9fe4-424a-a50a-06688549189b.png)
-![image](https://user-images.githubusercontent.com/50674232/167269980-173174de-8ad9-47cb-a9a2-c96b7f7bb37a.png)
+<img src="https://user-images.githubusercontent.com/50674232/167270016-c6cabf63-4550-4727-9d71-506e16950940.png" width="32%"/> <img src="https://user-images.githubusercontent.com/50674232/167269995-91e7ea19-9fe4-424a-a50a-06688549189b.png" width="33%"/> <img src="https://user-images.githubusercontent.com/50674232/167269980-173174de-8ad9-47cb-a9a2-c96b7f7bb37a.png" width="34%"/>
+
+
+
 
 
 
