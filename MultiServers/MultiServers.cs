@@ -42,10 +42,27 @@ namespace MultiServers
         }
         public void loadInstances()
         {
-            instancePanel.Controls.Clear();
+            foreach (Instance inst in instancePanel.Controls)
+            {
+                if (!Directory.Exists(inst.GetPath()))
+                {
+                    inst.Hide();
+                    instancePanel.Controls.Remove(inst);
+                }
+            }
             foreach (string instance in Directory.GetDirectories(Props.mainPath + "\\Instances\\"))
             {
-                instancePanel.Controls.Add(new Instance(instance, 0));
+                bool add = true;
+                foreach(Instance inst in instancePanel.Controls)
+                {
+                    if (inst.GetPath() == instance)
+                    {
+                        add = false;
+                    }
+                }
+                if (add)
+                    instancePanel.Controls.Add(new Instance(instance, 0));
+                
             }
         }
         private void newInstance_Click(object sender, EventArgs e)

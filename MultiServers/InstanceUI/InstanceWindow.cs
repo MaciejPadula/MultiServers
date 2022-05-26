@@ -49,11 +49,11 @@ namespace MultiServers.InstanceUI
 
             loadSettings();
             loadmods();
-            settingspanels.Add(instSettings);
+            settingspanels.Add(InstanceControlSettings);
             settingspanels.Add(NetworkSettings);
             settingspanels.Add(ServerSettings);
             settingspanels.Add(mods);
-            instSettings.BringToFront();
+            InstanceControlSettings.BringToFront();
             
 
             panel1.MouseMove += new MouseEventHandler(MouseMove2);
@@ -96,7 +96,9 @@ namespace MultiServers.InstanceUI
 
             this.ipAddressTextBox.Text = instanceSettings.getIpAddress();
             this.serverPortTextBox.Text = instanceSettings.getServerPort();
+
             this.onlineModeComboBox.SelectedIndex = Convert.ToInt32(instanceSettings.getOnlineMode());
+
             this.enableCommandBlocksComboBox.SelectedIndex = Convert.ToInt32(instanceSettings.getEnableCommandBlock());
             this.maxPlayersTextBox.Text = instanceSettings.getMaxPlayers().ToString();
             this.pvpComboBox.SelectedIndex = Convert.ToInt32(instanceSettings.getPvp());
@@ -109,6 +111,7 @@ namespace MultiServers.InstanceUI
         }
         private void saveSettings(object sender, EventArgs e)
         {
+
             instanceSettings
                 .setAllowFlight(Convert.ToBoolean(allowFlightComboBox.SelectedIndex))
                 .setDifficulty(difficultyComboBox.SelectedIndex)
@@ -120,9 +123,11 @@ namespace MultiServers.InstanceUI
                 .setServerName(Title.Text)
                 .setServerPort(serverPortTextBox.Text)
                 .setXmx(maxRam.Text)
-                .setXms(minRam.Text)
-                .setJarFile(jarFileComboBox.SelectedItem.ToString());
-
+                .setXms(minRam.Text);
+            if (jarFileComboBox.SelectedItem != null)
+            {
+                instanceSettings.setJarFile(jarFileComboBox.SelectedItem.ToString());
+            }
             SettingsManager.saveSettings(path, instanceSettings);
             SettingsManager.saveInfo(path, instanceSettings);
             Program.program.loadInstances();
@@ -135,18 +140,27 @@ namespace MultiServers.InstanceUI
         /*INSTANCE CONTROL*/
         private void Enter_Click(object sender, EventArgs e)
         {
-            server.sendCommand(inputTextBox.Text);
-            inputTextBox.Text = "";
-            inputTextBox.Focus();
+            handleMessageToServer(inputTextBox.Text);
         }
         private void inputTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                server.sendCommand(inputTextBox.Text);
-                inputTextBox.Text = "";
-                inputTextBox.Focus();
+                handleMessageToServer(inputTextBox.Text);
             }
+        }
+        private void handleMessageToServer(string message)
+        {
+            if (message.Contains("stop"))
+            {
+                stop_Click(null, null);
+            }
+            else
+            {
+                server.sendCommand(message);
+            }
+            inputTextBox.Text = "";
+            inputTextBox.Focus();
         }
         private void serverConsole_TextChanged(object sender, EventArgs e)
         {
@@ -157,15 +171,23 @@ namespace MultiServers.InstanceUI
 
         private void UpdateConsoleWindow(object sender, DataReadEventArgs e)
         {
-            serverConsole.Invoke(new Action(delegate ()
+            try
             {
-                serverConsole.AppendText(e.getMessage());
-            }));
+                serverConsole.Invoke(new Action(delegate ()
+                {
+                    serverConsole.AppendText(e.getMessage());
+                }));
+            }
+            catch { }
+            
         }
         private void run_Click(object sender, EventArgs e)
         {
             if (jarFileComboBox.SelectedItem != null)
             {
+                InstanceControlSettings.Enabled = false;
+                NetworkSettings.Enabled = false;
+                ServerSettings.Enabled = false;
                 string dir = Directory.GetCurrentDirectory();
                 Directory.SetCurrentDirectory(path);
 
@@ -191,6 +213,9 @@ namespace MultiServers.InstanceUI
         {
             server.sendCommand("stop");
             loadSettings();
+            InstanceControlSettings.Enabled = true;
+            ServerSettings.Enabled = true;
+            NetworkSettings.Enabled = true;
         }
         
 
@@ -208,6 +233,10 @@ namespace MultiServers.InstanceUI
         }
         private void Combo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(sender.GetType().Name == "TextBox")
+            {
+                this.Text = ((TextBox)sender).Text;
+            }
             applyButton.Show();
         }
 

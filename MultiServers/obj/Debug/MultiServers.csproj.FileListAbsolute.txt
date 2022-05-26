@@ -33,10 +33,7 @@ C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\bin\Debug\MultiServers
 C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\bin\Debug\MultiServers.pdb
 C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.csproj.AssemblyReference.cache
-C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.CreateInstance.resources
 C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.MultiServers.resources
-C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.Instance.resources
-C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.InstanceWindow.resources
 C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.Properties.Resources.resources
 C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.csproj.GenerateResource.cache
 C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.csproj.CoreCompileInputs.cache
@@ -46,3 +43,6 @@ C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers
 D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.InstanceUI.Instance.resources
 D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.InstanceUI.InstanceWindow.resources
 D:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.InstanceUI.CreateInstance.resources
+C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.InstanceUI.CreateInstance.resources
+C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.InstanceUI.Instance.resources
+C:\Users\Dulik\Documents\GitHub\MultiServers\MultiServers\obj\Debug\MultiServers.InstanceUI.InstanceWindow.resources

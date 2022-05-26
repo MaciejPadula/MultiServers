@@ -54,8 +54,8 @@
             this.serverVersion.Name = "serverVersion";
             this.serverVersion.Size = new System.Drawing.Size(75, 23);
             this.serverVersion.TabIndex = 1;
-            this.serverVersion.Tag = "https://s3.amazonaws.com/Minecraft.Download/versions/1.2.5/minecraft_server.1.2.5" +
-    ".jar";
+            this.serverVersion.Tag = "https://launchermeta.mojang.com/v1/packages/5158765caf1ca14958cb6c45d52c8e09ed9b0" +
+    "46c/1.2.5.json";
             this.serverVersion.Text = "1.2.5";
             this.serverVersion.UseVisualStyleBackColor = true;
             this.serverVersion.Click += new System.EventHandler(this.serverVersion_Click);

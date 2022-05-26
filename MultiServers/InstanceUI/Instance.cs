@@ -28,7 +28,7 @@ namespace MultiServers.InstanceUI
             window = new InstanceWindow(path, type, instanceSettings);
             window.Title.Text = nameLabel.Text;
             window.Text = nameLabel.Text;
-
+            window.Hide();
             openButton.Click += new EventHandler(openInstance);
             try
             {
@@ -107,6 +107,15 @@ namespace MultiServers.InstanceUI
         {
             this.window.killServer();
             this.window.Close();
+        }
+        public string GetPath()
+        {
+            return path;
+        }
+
+        private void Instance_Click(object sender, EventArgs e)
+        {
+            window.Show();
         }
     }
 }

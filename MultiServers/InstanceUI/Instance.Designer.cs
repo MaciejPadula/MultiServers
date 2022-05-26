@@ -175,6 +175,7 @@
             this.Controls.Add(this.nameLabel);
             this.Name = "Instance";
             this.Size = new System.Drawing.Size(673, 90);
+            this.Click += new System.EventHandler(this.Instance_Click);
             this.MouseEnter += new System.EventHandler(this.Instance_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.Instance_MouseLeave);
             ((System.ComponentModel.ISupportInitialize)(this.background)).EndInit();

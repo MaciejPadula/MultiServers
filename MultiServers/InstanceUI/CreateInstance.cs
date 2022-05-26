@@ -31,28 +31,46 @@ namespace MultiServers.InstanceUI
         }
         private void CreateInstance_Load(object sender, EventArgs e)
         {
+            ControlBox = true;
+            downloadProgressBar.Hide();
             downloadProgressLabel.Hide();
-            string manifest;
-            manifest = webClient.DownloadString("https://launchermeta.mojang.com/mc/game/version_manifest.json");
-            JSONObjects.MCRepoJSON.RootObject output = JsonConvert.DeserializeObject<JSONObjects.MCRepoJSON.RootObject>(manifest);
-            foreach (JSONObjects.MCRepoJSON.Version ver in output.versions)
-            {
-                ListViewItem item = new ListViewItem(ver.id);
-                item.Tag = ver.url;
+            serverVersion.Text = "1.2.5";
+            serverVersion.Tag = "https://launchermeta.mojang.com/v1/packages/5158765caf1ca14958cb6c45d52c8e09ed9b046c/1.2.5.json";
+            serverName.Text = "";
 
-                if (ver.id == output.latest.release)
+            createServer.Enabled = true;
+            serverVersion.Enabled = true;
+            serverName.Enabled = true;
+            downloadProgressLabel.Hide();
+            string manifest = null;
+            try
+            {
+                manifest = webClient.DownloadString("https://launchermeta.mojang.com/mc/game/version_manifest.json");
+                JSONObjects.MCRepoJSON.RootObject output = JsonConvert.DeserializeObject<JSONObjects.MCRepoJSON.RootObject>(manifest);
+                foreach (JSONObjects.MCRepoJSON.Version ver in output.versions)
                 {
-                    item.SubItems.Add("lastest release");
+                    ListViewItem item = new ListViewItem(ver.id);
+                    item.Tag = ver.url;
+
+                    if (ver.id == output.latest.release)
+                    {
+                        item.SubItems.Add("lastest release");
+                    }
+                    else if (ver.id == output.latest.snapshot)
+                    {
+                        item.SubItems.Add("lastest snapshot");
+                    }
+                    else
+                    {
+                        item.SubItems.Add(ver.type);
+                    }
+                    versionListView.Items.Add(item);
                 }
-                else if (ver.id == output.latest.snapshot)
-                {
-                    item.SubItems.Add("lastest snapshot");
-                }
-                else
-                {
-                    item.SubItems.Add(ver.type);
-                }
-                versionListView.Items.Add(item);
+            }
+            catch
+            {
+                MessageBox.Show("You cannot create instance without internet connection!", "Error");
+                this.Close();
             }
         }
 
@@ -70,7 +88,9 @@ namespace MultiServers.InstanceUI
         }
         private async void createServer_Click(object sender, EventArgs e)
         {
-
+            createServer.Enabled = false;
+            serverVersion.Enabled = false;
+            serverName.Enabled = false;
             if (serverName.Text == "")
             {
                 serverName.Text = serverVersion.Text;
@@ -130,7 +150,7 @@ namespace MultiServers.InstanceUI
                         
                     }*/
                     Directory.Delete(name, true);
-                    MessageBox.Show("Cannot create instance of that version","Error");
+                    MessageBox.Show("Cannot create instance of that version. If you want to use that verson place server jarfile named minecraft_server.VERSION.jar and try again.", "404 Not found");
                 }
             }
             else
@@ -139,12 +159,7 @@ namespace MultiServers.InstanceUI
             }
             Program.program.loadInstances();
             this.Hide();
-            ControlBox = true;
-            downloadProgressBar.Hide();
-            downloadProgressLabel.Hide();
-            serverVersion.Text = "1.2.5";
-            serverVersion.Tag = "https://launchermeta.mojang.com/v1/packages/5158765caf1ca14958cb6c45d52c8e09ed9b046c/1.2.5.json";
-            serverName.Text = "";
+            
         }
         private void serverVersion_Click(object sender, EventArgs e)
         {

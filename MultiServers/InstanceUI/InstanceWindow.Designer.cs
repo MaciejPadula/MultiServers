@@ -41,7 +41,7 @@
             this.jarFileComboBox = new System.Windows.Forms.ComboBox();
             this.enter = new System.Windows.Forms.Button();
             this.applyButton = new System.Windows.Forms.Button();
-            this.instSettings = new System.Windows.Forms.Panel();
+            this.InstanceControlSettings = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -80,7 +80,7 @@
             this.operDirButton = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.NetworkSettings.SuspendLayout();
-            this.instSettings.SuspendLayout();
+            this.InstanceControlSettings.SuspendLayout();
             this.ServerSettings.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconA)).BeginInit();
@@ -206,18 +206,18 @@
             this.applyButton.UseVisualStyleBackColor = true;
             this.applyButton.Click += new System.EventHandler(this.saveSettings);
             // 
-            // instSettings
+            // InstanceControlSettings
             // 
-            this.instSettings.Controls.Add(this.label5);
-            this.instSettings.Controls.Add(this.label4);
-            this.instSettings.Controls.Add(this.label2);
-            this.instSettings.Controls.Add(this.label3);
-            this.instSettings.Controls.Add(this.minRam);
-            this.instSettings.Controls.Add(this.maxRam);
-            this.instSettings.Location = new System.Drawing.Point(469, 73);
-            this.instSettings.Name = "instSettings";
-            this.instSettings.Size = new System.Drawing.Size(269, 323);
-            this.instSettings.TabIndex = 5;
+            this.InstanceControlSettings.Controls.Add(this.label5);
+            this.InstanceControlSettings.Controls.Add(this.label4);
+            this.InstanceControlSettings.Controls.Add(this.label2);
+            this.InstanceControlSettings.Controls.Add(this.label3);
+            this.InstanceControlSettings.Controls.Add(this.minRam);
+            this.InstanceControlSettings.Controls.Add(this.maxRam);
+            this.InstanceControlSettings.Location = new System.Drawing.Point(469, 73);
+            this.InstanceControlSettings.Name = "InstanceControlSettings";
+            this.InstanceControlSettings.Size = new System.Drawing.Size(269, 323);
+            this.InstanceControlSettings.TabIndex = 5;
             // 
             // label5
             // 
@@ -314,8 +314,8 @@
             // 
             this.enableCommandBlocksComboBox.FormattingEnabled = true;
             this.enableCommandBlocksComboBox.Items.AddRange(new object[] {
-            "true",
-            "false"});
+            "false",
+            "true"});
             this.enableCommandBlocksComboBox.Location = new System.Drawing.Point(2, 213);
             this.enableCommandBlocksComboBox.Name = "enableCommandBlocksComboBox";
             this.enableCommandBlocksComboBox.Size = new System.Drawing.Size(79, 21);
@@ -335,8 +335,8 @@
             // 
             this.allowFlightComboBox.FormattingEnabled = true;
             this.allowFlightComboBox.Items.AddRange(new object[] {
-            "true",
-            "false"});
+            "false",
+            "true"});
             this.allowFlightComboBox.Location = new System.Drawing.Point(2, 173);
             this.allowFlightComboBox.Name = "allowFlightComboBox";
             this.allowFlightComboBox.Size = new System.Drawing.Size(79, 21);
@@ -379,8 +379,8 @@
             // 
             this.pvpComboBox.FormattingEnabled = true;
             this.pvpComboBox.Items.AddRange(new object[] {
-            "true",
-            "false"});
+            "false",
+            "true"});
             this.pvpComboBox.Location = new System.Drawing.Point(2, 94);
             this.pvpComboBox.Name = "pvpComboBox";
             this.pvpComboBox.Size = new System.Drawing.Size(79, 21);
@@ -417,8 +417,8 @@
             // 
             this.onlineModeComboBox.FormattingEnabled = true;
             this.onlineModeComboBox.Items.AddRange(new object[] {
-            "true",
-            "false"});
+            "false",
+            "true"});
             this.onlineModeComboBox.Location = new System.Drawing.Point(2, 16);
             this.onlineModeComboBox.Name = "onlineModeComboBox";
             this.onlineModeComboBox.Size = new System.Drawing.Size(79, 21);
@@ -616,11 +616,12 @@
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.runButton);
             this.Controls.Add(this.serverConsole);
-            this.Controls.Add(this.mods);
-            this.Controls.Add(this.instSettings);
+            this.Controls.Add(this.InstanceControlSettings);
             this.Controls.Add(this.ServerSettings);
             this.Controls.Add(this.NetworkSettings);
+            this.Controls.Add(this.mods);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InstanceWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InstanceWindow";
@@ -630,8 +631,8 @@
             this.Load += new System.EventHandler(this.InstanceWindow_Load);
             this.NetworkSettings.ResumeLayout(false);
             this.NetworkSettings.PerformLayout();
-            this.instSettings.ResumeLayout(false);
-            this.instSettings.PerformLayout();
+            this.InstanceControlSettings.ResumeLayout(false);
+            this.InstanceControlSettings.PerformLayout();
             this.ServerSettings.ResumeLayout(false);
             this.ServerSettings.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -661,7 +662,7 @@
         private System.Windows.Forms.ComboBox jarFileComboBox;
         private System.Windows.Forms.Button enter;
         private System.Windows.Forms.Button applyButton;
-        private System.Windows.Forms.Panel instSettings;
+        private System.Windows.Forms.Panel InstanceControlSettings;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox minRam;

@@ -9,6 +9,11 @@ namespace MultiServers.InstanceManagement
 {
     public class SettingsManager
     {
+        private string path;
+        public SettingsManager(string path)
+        {
+            this.path = path;
+        }
         public static InstanceSettings readInstanceSettings(String path)
         {
             InstanceSettings instanceSettings = new InstanceSettings();
@@ -23,6 +28,10 @@ namespace MultiServers.InstanceManagement
                     else if (line.Contains("server-port="))
                     {
                         instanceSettings.setServerPort(line.Replace("server-port=", ""));
+                    }
+                    else if (line.Contains("query.port="))
+                    {
+                        instanceSettings.setServerPort(line.Replace("query.port=", ""));
                     }
                     else if (line.Contains("online-mode="))
                     {
@@ -99,12 +108,12 @@ namespace MultiServers.InstanceManagement
                 
                 File.WriteAllText(filename, "server-ip=" + instanceSettings.getIpAddress() + "\n"
                     + "server-port=" + instanceSettings.getServerPort() + "\n"
-                    + "online-mode=" + instanceSettings.getOnlineMode() + "\n"
-                    + "pvp=" + instanceSettings.getPvp() + "\n"
+                    + "online-mode=" + instanceSettings.getOnlineMode().ToString().ToLower() + "\n"
+                    + "pvp=" + instanceSettings.getPvp().ToString().ToLower() + "\n"
                     + "max-players=" + instanceSettings.getMaxPlayers() + "\n"
                     + "difficulty=" + instanceSettings.getDifficulty() + "\n"
-                    + "allow-flight=" + instanceSettings.getAllowFlight() + "\n"
-                    + "enable-command-block=" + instanceSettings.getEnableCommandBlock() + "\n"
+                    + "allow-flight=" + instanceSettings.getAllowFlight().ToString().ToLower() + "\n"
+                    + "enable-command-block=" + instanceSettings.getEnableCommandBlock().ToString().ToLower() + "\n"
                 );
                 File.AppendAllLines(filename, instanceSettings.getOtherSettings());
             }
