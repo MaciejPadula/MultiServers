@@ -26,7 +26,6 @@ namespace MultiServers.InstanceUI
             this.Width = 180;
             versionListView.Click += new EventHandler(versionSelect);
             webClient = new WebClient();
-            webClient.Proxy = null;
             webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(downloadProgress_Changed);
         }
         private void CreateInstance_Load(object sender, EventArgs e)
@@ -35,17 +34,17 @@ namespace MultiServers.InstanceUI
             downloadProgressBar.Hide();
             downloadProgressLabel.Hide();
             serverVersion.Text = "1.2.5";
-            serverVersion.Tag = "https://launchermeta.mojang.com/v1/packages/5158765caf1ca14958cb6c45d52c8e09ed9b046c/1.2.5.json";
+            serverVersion.Tag = "http://launchermeta.mojang.com/v1/packages/5158765caf1ca14958cb6c45d52c8e09ed9b046c/1.2.5.json";
             serverName.Text = "";
 
             createServer.Enabled = true;
             serverVersion.Enabled = true;
             serverName.Enabled = true;
             downloadProgressLabel.Hide();
-            string manifest = null;
             try
             {
-                manifest = webClient.DownloadString("https://launchermeta.mojang.com/mc/game/version_manifest.json");
+                string manifest = null;
+                manifest = webClient.DownloadString("http://launchermeta.mojang.com/mc/game/version_manifest.json");
                 JSONObjects.MCRepoJSON.RootObject output = JsonConvert.DeserializeObject<JSONObjects.MCRepoJSON.RootObject>(manifest);
                 foreach (JSONObjects.MCRepoJSON.Version ver in output.versions)
                 {
@@ -67,7 +66,7 @@ namespace MultiServers.InstanceUI
                     versionListView.Items.Add(item);
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 MessageBox.Show("You cannot create instance without internet connection!", "Error");
                 this.Close();
@@ -77,7 +76,7 @@ namespace MultiServers.InstanceUI
         void versionSelect(object sender,EventArgs e)
         {
             serverVersion.Text = versionListView.SelectedItems[0].Text;
-            serverVersion.Tag = versionListView.SelectedItems[0].Tag;
+            serverVersion.Tag = versionListView.SelectedItems[0].Tag.ToString().Replace("https", "http");
             this.Width = 180;
         }
         void downloadProgress_Changed(object sender, DownloadProgressChangedEventArgs e)
@@ -119,7 +118,7 @@ namespace MultiServers.InstanceUI
             downloadProgressLabel.Show();
             if (!File.Exists("Version\\minecraft_server." + serverVersion.Text+".jar"))
             {
-                string mcVersion = webClient.DownloadString(serverVersion.Tag as String);
+                string mcVersion = webClient.DownloadString((serverVersion.Tag as String));
 
                 JSONObjects.MCVersionJSON.RootObject rootObject = JsonConvert.DeserializeObject<JSONObjects.MCVersionJSON.RootObject>(mcVersion);
 
@@ -127,7 +126,7 @@ namespace MultiServers.InstanceUI
 
                 if (rootObject.downloads.server != null)
                 {
-                    url = rootObject.downloads.server.url;
+                    url = rootObject.downloads.server.url.Replace("https", "http");
                 }
                 ControlBox = false;
                 try
@@ -136,7 +135,7 @@ namespace MultiServers.InstanceUI
                     
                     File.Copy("Version\\minecraft_server." + serverVersion.Text + ".jar", name + "\\minecraft_server." + serverVersion.Text + ".jar");
                 }
-                catch
+                catch(Exception ex)
                 {
                     /*try
                     {
@@ -150,6 +149,7 @@ namespace MultiServers.InstanceUI
                         
                     }*/
                     Directory.Delete(name, true);
+                    MessageBox.Show(ex.Message);
                     MessageBox.Show("Cannot create instance of that version. If you want to use that verson place server jarfile named minecraft_server.VERSION.jar and try again.", "404 Not found");
                 }
             }
